@@ -22,6 +22,7 @@ import com.example.myapplication.fragments.Communicator
 import com.example.myapplication.fragments.hjem.HjemFragment
 import com.example.myapplication.fragments.kategori.KategoriFragment
 import com.example.myapplication.fragments.mineevents.MineEventFragment
+import com.example.myapplication.fragments.nyttevent.Event_utfyllingsskjema
 import com.example.myapplication.fragments.nyttevent.NyttEventFragment
 import com.example.myapplication.fragments.profil.ProfilFragment
 import com.example.myapplication.fragments.profil.RedigerProfilFragment
@@ -31,7 +32,7 @@ import kotlinx.android.synthetic.main.activity_traverse_app.*
 import kotlinx.android.synthetic.main.event_liste.*
 import java.util.prefs.AbstractPreferences
 
-class MainActivity : AppCompatActivity(), Communicator {
+class MainActivity : AppCompatActivity(), Communicator, midlertidig {
 
     //val botnav = findViewById<View>(R.id.bottomNav)
 
@@ -88,6 +89,14 @@ class MainActivity : AppCompatActivity(), Communicator {
         val eventFragment = EventFragment()
         eventFragment.arguments = bundle
         transaction.replace(R.id.container,eventFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+    override fun midlertidigSkjema() {
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val skjemaFragment = Event_utfyllingsskjema()
+        transaction.replace(R.id.container,skjemaFragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
