@@ -5,6 +5,7 @@ import RecyclerView.RecyclerView.Moduls.DataSource
 import RecyclerView.RecyclerView.Moduls.Event
 import RecyclerView.RecyclerView.OnEventItemClickListener
 import RecyclerView.RecyclerView.TopSpacingItemDecoration
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -24,6 +25,8 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.afollestad.materialdialogs.MaterialDialog
+import com.afollestad.materialdialogs.customview.customView
 
 import com.example.myapplication.fragments.Communicator
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -47,7 +50,19 @@ class Event_liste_fragment : Fragment(), OnEventItemClickListener {
 
         val view = inflater.inflate(R.layout.event_liste, container, false)
 
+        view.knapp_åpne_kategori.setOnClickListener {
+            showFilterDialog()
+
+        }
         return view
+    }
+
+    private fun showFilterDialog() {
+        val context: Context = requireContext()
+        val dialog = MaterialDialog(context)
+            .noAutoDismiss()
+            .customView(R.layout.layout_filter)
+        dialog.show()
     }
 
 

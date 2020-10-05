@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), Communicator {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING) // Fikser at keyboard vindu går over content isteden for å pushe det opp.
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN) // Fikser at keyboard vindu går over content isteden for å pushe det opp.
 
         //redigerKnapp.setOnClickListener {view?.findNavController()?.navigate(R.id.action_event_liste_fragment_to_eventFragment)  }
 
